@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badge</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <style>
+      body {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "article article article"
+          "footer footer footer";
+        grid-template-rows: 80px auto 40px;
+        height: 100vh;
+      }
+
+      nav {
+        grid-area: header;
+      }
+      main {
+        grid-area: article;
+      }
+      footer {
+        grid-area: footer;
+      }
+    </style>
+    <!-- <script>
+      const downloadButton = document.getElementById("downloadButton");
+      downloadButton.addEventListener("click", () => {
+        const filePath = `${__dirname}/final-outs/abc.png`;
+        const link = document.createElement("a");
+        link.href = filePath;
+        link.setAttribute("download", "");
+        link.style.display = "none";
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+      });
+    </script> -->
+  </head>
+  <body class="bg-[hsl(230,93%,11%)] text-white">
+    <nav class="flex w-full justify-between container mx-auto">
+      <ul class="flex"></ul>
+    </nav>
+    <main
+      id="content"
+      class="min-h-full flex flex-col justify-center items-center"
+    >
+      <h1 class="text-5xl font-bold tracking-wider">Your Badge is Generated</h1>
+
+      <div class="mx-10 m-20">
+        <h1></h1>
+        <button id="downloadButton">
+          <a href="">Download the File</a>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

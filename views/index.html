@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "article article article"
+          "footer footer footer";
+        grid-template-rows: 80px auto 40px;
+        height: 100vh;
+      }
+
+      nav {
+        grid-area: header;
+      }
+      main {
+        grid-area: article;
+      }
+      footer {
+        grid-area: footer;
+      }
+    </style>
+    <title>IEEE SB CEV - Membership Card Generator</title>
+  </head>
+  <body class="bg-[hsl(230,93%,11%)] text-white">
+    <nav class="flex w-full justify-between container mx-auto p-6">
+      <!-- <img src="epd112.jpg" alt="Hi" /> -->
+      <ul class="flex"></ul>
+      <ul class="flex"></ul>
+    </nav>
+    <main
+      id="content"
+      class="min-h-full flex flex-col justify-center items-center"
+    >
+      <h1 class="text-5xl font-bold tracking-wider">
+        IEEE SB CEV - Membership Card Generator
+      </h1>
+      <p class="w-3/5 max-w-[720px] text-center text-lg my-4">
+        The IEEE SB College of Engineering Vadakara Membership Card Generator is
+        a web application designed to generate membership cards for CEV IEEE
+        Student Members. The application allows members to create personalized
+        membership cards by providing their membership number and full name. The
+        generated membership cards can be downloaded for identification purposes
+        on IEEE SB CEV Events.
+      </p>
+
+      <div>
+        <a href="/badge-generator"
+          ><button class="py-4 px-6 bg-blue-600 font-medium rounded-lg m-4">
+            Badge Generator
+          </button></a
+        >
+        <a href="/auto-badge-gen"
+          ><button class="py-4 px-6 bg-blue-600 font-medium rounded-lg m-4">
+            Auto Badge Generator
+          </button></a
+        >
+        <!-- <a href="/login"
+          ><button class="py-4 px-6 bg-gray-600 font-medium rounded-lg m-4">
+            Login
+          </button></a
+        > -->
+      </div>
+    </main>
+  </body>
+</html>
