@@ -1,30 +1,34 @@
+// require elements are added here.
 const express = require("express");
 const sharp = require("sharp");
 const ejs = require("ejs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const csv = require("csv-parser");
-// const csvtojson = require("csvtojson");
 const multer = require("multer");
 const fs = require("fs");
 const { textSpanIsEmpty } = require("typescript");
 
+// express app
 const app = express();
 const upload = multer({ dest: "uploads/" });
-// const filePath = "/final-outs";
+
+// Body parser for parsing data from body.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Ejs set-up
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Landing Page
 app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
 });
 
-app.post("/badge-data", (req, res) => {
+// POST Method for CSV Badge Generator
+app.post("/badge-gen", (req, res) => {
   const { name, ieeenum } = req.body;
-
   async function addTextOnImage(name, ieeenum) {
     try {
       const width = 5600; // width of views file
@@ -62,6 +66,7 @@ app.post("/badge-data", (req, res) => {
   addTextOnImage(name, ieeenum);
 });
 
+// GET Method - For Downloading the File
 app.get("/download/:data", (req, res) => {
   const fileName = `${req.params.data}.png`;
   const filePath = path.join(__dirname, "final-outs", fileName);
@@ -72,20 +77,22 @@ app.get("/download/:data", (req, res) => {
   });
 });
 
+// One-on-one Badge Generator
 app.get("/badge-generator", (req, res) => {
-  res.sendFile(`${__dirname}/views/data-form.html`);
+  res.render(`data-form.ejs`);
 });
 
+// GET for collecting CSV File
 app.get("/auto-badge-gen", (req, res) => {
-  res.sendFile(`${__dirname}/views/auto-gen.html`);
+  res.render("auto-gen");
 });
 
+// Conversion of CSV to JSON
 app.post("/auto-badge-gen", upload.single("csvFile"), (req, res) => {
   const csvFile = req.file;
   if (!csvFile) {
     res.send("NO csv found");
   }
-
   const results = [];
   fs.createReadStream(csvFile.path)
     .pipe(csv())
@@ -93,11 +100,12 @@ app.post("/auto-badge-gen", upload.single("csvFile"), (req, res) => {
       results.push(data);
     })
     .on("end", () => {
-      const jsonString = JSON.stringify(results);
-      res.send("Data Conversion Done " + jsonString);
+      // const jsonString = JSON.stringify(results);
+      res.render("csvGen", { results });
     });
 });
 
+// App listen to PORT 3000
 app.listen(3000, () => {
   console.log("App is listening on the port 3000");
 });

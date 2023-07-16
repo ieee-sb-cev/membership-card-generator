@@ -23,7 +23,7 @@
       >
         <h1 class="font-bold text-3xl my-7">Card Generator</h1>
         <form
-          action="/badge-data"
+          action="/badge-gen"
           method="POST"
           class="grid grid-cols-2 items-center gap-8 gap-y-4 w-full"
         >
@@ -31,6 +31,7 @@
             <div><label for="name">Full Name</label></div>
             <div>
               <input
+                required
                 class="w-full my-2 p-2 rounded-lg bg-gray-700"
                 type="text"
                 placeholder="Full Name"
@@ -44,6 +45,7 @@
             <div><label for="ieeenum">IEEE Membership Number</label></div>
             <div>
               <input
+                required
                 class="w-full my-2 p-2 rounded-lg bg-gray-700"
                 type="text"
                 placeholder="eg : 96472297"
@@ -61,11 +63,16 @@
             />
           </div>
           <div class="w-full text-center">
-            <input
+            <!-- <input
               class="w-full py-2 font-medium rounded-lg bg-white text-black hover:bg-blue-500 hover:text-white"
               type="reset"
               value="Reset"
-            />
+            /> -->
+            <div
+              class="w-full py-2 font-medium rounded-lg bg-white text-black hover:bg-blue-500 hover:text-white"
+            >
+              <a href="/">⬅ Back to Dashboard</a>
+            </div>
           </div>
         </form>
       </div>

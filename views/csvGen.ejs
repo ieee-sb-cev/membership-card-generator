@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From CEV - Badge Generation</title>
+  </head>
+  <style>
+    body {
+      display: grid;
+      height: 100vh;
+    }
+    :is(submit, reset):hover {
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <body class="bg-[hsl(230,93%,11%)] text-white mx-10">
+    <div class="flex justify-center items-center text-2xl font-bold m-10">
+      <h1>Download the List of Badges From Here 👇🏻</h1>
+    </div>
+    <table class="border-seperate border border-slate-100 p-3">
+      <tr class="border border-slate-300 bg-indigo-900 min-h-[50%]">
+        <th>Name</th>
+        <th>IEEE Number</th>
+        <th>Download Badge</th>
+      </tr>
+
+      <% results.forEach(function(obj){ %>
+      <tbody class="border p-5">
+        <tr class="text-center text-md font-semibold">
+          <td><%= obj.name %></td>
+          <td><%= obj.id %></td>
+          <td>
+            <form action="/badge-gen" method="POST">
+              <input hidden type="text" value="<%= obj.name %>" name="name" />
+              <input
+                hidden
+                type="number"
+                value="<%= obj.id %>"
+                name="ieeenum"
+              />
+              <button
+                type="submit"
+                class="bg-green-400 p-2 font-semibold text-sm text-black rounded-lg hover:bg-red-600 hover:text-white"
+              >
+                DOWNLOAD
+              </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+      <% }) %>
+    </table>
+    <button class="p-2 font-bold text-xl hover:text-white">
+      <a href="/">⬅ Back to Dashboard</a>
+    </button>
+  </body>
+</html>
