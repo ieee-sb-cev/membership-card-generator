@@ -1,6 +1,6 @@
 # IEEE SB CEV - Membership Card Generator
 
-Version : 1.0.0
+## Project Version : 1.0.0
 
 For generating the badge for now,
 you need to be installed with [NodeJS](https://nodejs.org/en) in your system.

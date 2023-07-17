@@ -16,20 +16,24 @@
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
-  <body class="bg-[hsl(230,93%,11%)] text-white mx-10">
-    <div class="flex justify-center items-center text-2xl font-bold m-10">
+  <body class="bg-[hsl(230,93%,11%)] text-white">
+    <div
+      class="flex justify-center items-center text-2xl font-bold mt-8 ml-8 mr-8"
+    >
       <h1>Download the List of Badges From Here 👇🏻</h1>
     </div>
-    <table class="border-seperate border border-slate-100 p-3">
-      <tr class="border border-slate-300 bg-indigo-900 min-h-[50%]">
-        <th>Name</th>
-        <th>IEEE Number</th>
-        <th>Download Badge</th>
-      </tr>
+    <table class="border border-slate-100 m-10">
+      <thead class="">
+        <tr class="border bg-indigo-900">
+          <th>Name</th>
+          <th>IEEE Number</th>
+          <th>Download Badge</th>
+        </tr>
+      </thead>
 
-      <% results.forEach(function(obj){ %>
-      <tbody class="border p-5">
-        <tr class="text-center text-md font-semibold">
+      <tbody class="border">
+        <% results.forEach(function(obj){ %>
+        <tr class="border text-center text-md font-semibold p-5 m-5">
           <td><%= obj.name %></td>
           <td><%= obj.id %></td>
           <td>
@@ -41,20 +45,32 @@
                 value="<%= obj.id %>"
                 name="ieeenum"
               />
-              <button
-                type="submit"
-                class="bg-green-400 p-2 font-semibold text-sm text-black rounded-lg hover:bg-red-600 hover:text-white"
-              >
-                DOWNLOAD
-              </button>
+              <div class="p-2">
+                <button
+                  type="submit"
+                  class="bg-green-400 p-1 font-semibold text-sm text-black rounded-lg hover:bg-red-600 hover:text-white"
+                >
+                  DOWNLOAD
+                </button>
+              </div>
             </form>
           </td>
         </tr>
+        <% }) %>
       </tbody>
-      <% }) %>
     </table>
-    <button class="p-2 font-bold text-xl hover:text-white">
-      <a href="/">⬅ Back to Dashboard</a>
-    </button>
+    <!-- <button class="p-2 font-bold text-xl hover:text-white"> -->
+    <div
+      class="text-xl font-bold bg-[hsl(230,93%,11%)] text-2xl font-bold flex justify-center relative min-h-[5vh]"
+    >
+      <button class="px-5 bg-blue-800 rounded hover:bg-blue-700">
+        <a href="/">⬅ Back to Dashboard</a><br />
+      </button>
+    </div>
+    <div
+      class="text-2xl font-bold bg-[hsl(230,93%,11%)] text-2xl font-bold flex justify-center relative min-h-[5vh]"
+    >
+      <button><a href="/"></a><br /></button>
+    </div>
   </body>
 </html>
